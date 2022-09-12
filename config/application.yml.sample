@@ -1,0 +1,6 @@
+development:
+  DATABASE_NAME: 'pan-open'
+  DB_USERNAME: 'postgres'
+  DB_PASSWORD: 'postgres'
+  DB_HOST: 'localhost'
+
