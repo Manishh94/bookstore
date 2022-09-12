@@ -51,6 +51,9 @@ gem "bootsnap", require: false
 # Figaro was written to make it easy to securely configure Rails applications.
 gem "figaro"
 
+# Faker generates data at random, returned values are not guaranteed to be unique by default. 
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
 # Use postgresql as the database for Active Record
 gem 'pg'
 
