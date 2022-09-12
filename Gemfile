@@ -52,7 +52,7 @@ gem "bootsnap", require: false
 gem "figaro"
 
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.18'
+gem 'pg'
 
 # Very simple rolifyes library without any authorization enforcement supporting scope on resource object.
 gem 'rolify'
