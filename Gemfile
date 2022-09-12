@@ -51,6 +51,13 @@ gem "bootsnap", require: false
 # Figaro was written to make it easy to securely configure Rails applications.
 gem "figaro"
 
+# Use postgresql as the database for Active Record
+gem 'pg', '~> 0.18'
+
+# Very simple rolifyes library without any authorization enforcement supporting scope on resource object.
+gem 'rolify'
+
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
@@ -67,7 +74,14 @@ group :development do
   # gem "spring"
 
   # Debugging
-  gem 'pry'
+  gem 'pry-rails'
+
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec'
+  gem 'brakeman',  require: false
+  gem 'bundle-audit', require: false
+  gem 'xray-rails'
+  gem 'better_errors'
 end
 
 group :test do
