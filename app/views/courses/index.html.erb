@@ -1,0 +1,19 @@
+
+<h1>Courses</h1>
+<%= link_to "New course", new_course_path %>
+
+<div id="courses">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>User</th>
+      <th>Students</th>
+      <th>Actions</th>
+    </tr>
+    <% @courses.each do |course| %>
+      <%= render course %>
+    <% end %>
+  </table>
+</div>
+

@@ -1,0 +1,47 @@
+<%= form_with(model: user, local: false, html: {
+                      class: "form",
+                      data: { turbo: false }
+                    }) do |form| %>
+  <% if user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if user.persisted? %>
+    <div>
+      Email:
+      <%= form.object.email %>
+    </div>
+    <br>
+  <% else %>
+    <div>
+      Email:
+      <%= form.text_field :email %>
+    </div>
+    <br>
+  <% end %>
+
+  <div>
+    Name:
+    <%= form.text_field :name %>
+  </div>
+
+  <br>
+
+  <div>
+    <% roles_array = Role.all.map { |role| [role.name, role.id] } %>
+    <%= form.select :role, options_for_select(roles_array), selected: user.roles_name.first %>
+  </div>
+  <br>
+  
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

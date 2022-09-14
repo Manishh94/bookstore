@@ -1,0 +1,23 @@
+<%= form_with url: "/users", method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<br>
+
+<table>
+	<tr>
+		<td>Name</td>
+		<td>Email</td>
+		<td>Actions</td>
+	</tr>
+	<% @users.each do |user| %>
+		<tr>
+			<td><%= user.name %></td>
+			<td><%= user.email %></td>
+			<td><%= link_to 'edit', edit_user_path(user) %></td>
+			<td><%= link_to 'Delete', user_path(user), method: :delete %></td>
+		</tr>
+	<% end %>
+</table>
