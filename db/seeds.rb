@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+%I[student instructor].each do |role_name|
+  Role.find_or_create_by(name: role_name)
+end
