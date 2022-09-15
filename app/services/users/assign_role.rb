@@ -5,6 +5,6 @@ module Users
       user.roles << Role.find_by(name: role)
 
       user
-    end 
+    end
   end
 end
