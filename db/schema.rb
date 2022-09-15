@@ -11,24 +11,21 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2022_09_15_070818) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "books", force: :cascade do |t|
+  create_table "books", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "books_courses", id: false, force: :cascade do |t|
+  create_table "books_courses", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "book_id", null: false
     t.bigint "course_id", null: false
     t.index ["book_id", "course_id"], name: "index_books_courses_on_book_id_and_course_id", unique: true
     t.index ["course_id", "book_id"], name: "index_books_courses_on_course_id_and_book_id"
   end
 
-  create_table "courses", force: :cascade do |t|
+  create_table "courses", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -36,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_070818) do
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
-  create_table "reading_times", force: :cascade do |t|
+  create_table "reading_times", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "book_id", null: false
     t.integer "minutes_spend"
@@ -46,7 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_070818) do
     t.index ["user_id"], name: "index_reading_times_on_user_id"
   end
 
-  create_table "roles", force: :cascade do |t|
+  create_table "roles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
     t.bigint "resource_id"
@@ -56,7 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_070818) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", null: false
     t.string "name"
     t.datetime "created_at", null: false
@@ -64,7 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_15_070818) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "users_roles", id: false, force: :cascade do |t|
+  create_table "users_roles", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "role_id"
     t.index ["role_id"], name: "index_users_roles_on_role_id"

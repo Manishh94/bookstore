@@ -3,4 +3,4 @@ development:
   DB_USERNAME: 'postgres'
   DB_PASSWORD: 'postgres'
   DB_HOST: 'localhost'
-
+  sidekiq_redis: 'redis://localhost:6379/1'
