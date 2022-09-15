@@ -3,12 +3,16 @@ class UsersController < ApplicationController
 
   # GET /users or /users.json
   def index
-    @users = 
-      if query.present?
-        User.where("email like '%?%' ", query)
-      else  
-        User.all
-      end
+    @users = User.order(id: :desc)
+    if query.present?
+      filter_users
+    end
+    @users = @users.paginate(page: params[:page], per_page: 30)
+  end
+
+  def filter_users
+    @users = @users.where("email like '%#{query[:email].to_s}%' ") if query[:email].present?
+    @users = @users.with_role(query[:role]) if query[:role].present?
   end
 
   # GET /users/1 or /users/1.json

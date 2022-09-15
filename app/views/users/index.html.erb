@@ -1,6 +1,9 @@
 <%= form_with url: "/users", method: :get do |form| %>
   <%= form.label :query, "Search for:" %>
-  <%= form.text_field :query %>
+  <%= form.text_field 'query[email]' %>
+
+  <%= form.label :role, "Role :"%>
+  <%= form.select 'query[role]', Role.pluck(:name) %>
   <%= form.submit "Search" %>
 <% end %>
 
@@ -8,16 +11,20 @@
 
 <table>
 	<tr>
+		<td>ID</td>
 		<td>Name</td>
 		<td>Email</td>
-		<td>Actions</td>
+		<td colspan="3">Actions</td>
 	</tr>
 	<% @users.each do |user| %>
 		<tr>
+			<td><%= user.id %></td>
 			<td><%= user.name %></td>
 			<td><%= user.email %></td>
 			<td><%= link_to 'edit', edit_user_path(user) %></td>
+			<td><%= link_to 'Details', user_path(user) %></td>
 			<td><%= link_to 'Delete', user_path(user), method: :delete %></td>
 		</tr>
 	<% end %>
 </table>
+<%= will_paginate @users %>

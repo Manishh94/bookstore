@@ -1,6 +1,18 @@
 <p style="color: green"><%= notice %></p>
+<h1>Course Details </h1>
 
-<%= render @course %>
+<table>
+  <tr>
+    <tr>
+    <td>ID</td>
+    <td>Name</td>
+    <td>Instructor name</td>
+    <td>Students Count</td>
+    <td>Action</td>
+  </tr>
+
+  <%= render @course %>
+</table>
 
 <div>
   <%= link_to "Edit this course", edit_course_path(@course) %> |

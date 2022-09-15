@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: %i[ show edit update destroy ]
+  before_action :set_course, only: %i[ show edit update destroy students ]
 
   # GET /courses or /courses.json
   def index
@@ -8,6 +8,10 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
+  end
+
+  def students
+    @reading_times = @course.reading_times.includes(:user)
   end
 
   # GET /courses/new

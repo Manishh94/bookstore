@@ -3,4 +3,8 @@ class Book < ApplicationRecord
   has_and_belongs_to_many :courses
 
   has_many :students, through: :reading_times, source: :user
+
+
+  validates :title, presence: true
+
 end

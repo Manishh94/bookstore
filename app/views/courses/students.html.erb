@@ -1,0 +1,27 @@
+<h1>
+	Students details
+</h1>
+
+<div>
+	Course : <%= link_to @course.name, course_path(@course) %>
+</div>
+
+<div>
+	Total Hours : <%= formatted_duration(@reading_times.pluck(:minutes_spend).sum) %>
+</div>
+
+<br>
+<table>
+	<tr>
+		<th>Student Name</th>
+		<th>Student Email</th>
+		<th>Time Spend</th>
+	</tr>
+	<% @reading_times.each do |reading_time| %>
+		<tr>
+			<td><%= reading_time.user.name %></td>
+			<td><%= reading_time.user.email %></td>
+			<td><%= formatted_duration(reading_time.minutes_spend) %></td>
+		</tr>
+	<% end %>
+</table>
